@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+<title>My First Website - CCC Master Course</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}button,input{font:inherit}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 2px 12px #0000000d}
+nav{max-width:1100px;margin:auto;min-height:65px;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:21px;font-weight:800;color:#2563eb}.logo span{color:#111827}
+.links{display:flex;gap:7px;flex-wrap:wrap}.links a{padding:8px 11px;border-radius:8px;font-weight:600;font-size:14px}.links a:hover{background:#eff6ff;color:#2563eb}
+.menu{display:none;border:0;background:#eff6ff;padding:8px 11px;border-radius:8px}
+.hero{background:linear-gradient(135deg,#1d4ed8,#2563eb,#4f46e5);color:#fff;padding:65px 18px}
+.heroin{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.4fr .8fr;gap:30px;align-items:center}
+.badge{display:inline-block;background:#ffffff22;border:1px solid #ffffff44;padding:6px 13px;border-radius:25px;margin-bottom:16px;font-size:13px}
+h1{font-size:clamp(35px,5vw,58px);line-height:1.1;margin-bottom:16px}.hero p{font-size:18px;max-width:680px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer;margin-top:20px;margin-right:7px}
+.white{background:#fff;color:#1d4ed8}.dark{background:#111827;color:#fff}.blue{background:#2563eb;color:#fff}
+.herocard{background:#ffffff18;border:1px solid #ffffff33;border-radius:18px;padding:23px}.herocard div{padding:6px 0}
+.container{max-width:1100px;margin:auto;padding:42px 18px}.title{text-align:center;margin-bottom:28px}.title h2{font-size:31px}.title p{color:#64748b}
+.search{max-width:700px;margin:0 auto 25px}.search input{width:100%;padding:15px 18px;border:1px solid #dbe1ea;border-radius:13px;outline:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}.stat{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:18px;text-align:center}.stat strong{display:block;font-size:29px;color:#2563eb}.stat span{color:#64748b;font-size:13px}
+.progress{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:17px;margin-bottom:28px}.bar{height:11px;background:#e5e7eb;border-radius:20px;overflow:hidden;margin:8px 0}.fill{height:100%;width:0;background:#2563eb;transition:.3s}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:17px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #00000010}.top{padding:18px;background:#eff6ff}.num{font-size:12px;color:#2563eb;font-weight:800}.top h3{margin:5px 0}.top p,.cardbody{color:#64748b;font-size:14px}.cardbody{padding:17px}.topics{list-style:none}.topics li{border-bottom:1px solid #eef0f4}.topics a{display:block;padding:7px 0;color:#334155}.topics a:hover{color:#2563eb}.complete{width:100%;margin-top:13px;padding:9px;border:1px solid #2563eb;border-radius:8px;background:#fff;color:#2563eb;font-weight:700;cursor:pointer}.complete.done{background:#dcfce7;border-color:#16a34a;color:#15803d}
+.topic{background:#fff;border:1px solid #e5e7eb;border-radius:17px;padding:23px;margin-bottom:18px;scroll-margin-top:80px}.topic h3{color:#1d4ed8;margin-bottom:9px;font-size:22px}.topic h4{margin:15px 0 6px}.topic p,.topic li{color:#475569}.topic ul{padding-left:21px}.box{background:#eff6ff;border-left:4px solid #2563eb;padding:12px;margin-top:13px;border-radius:7px}
+.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.resource{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:20px}.resource p{color:#64748b;font-size:14px;margin:7px 0 12px}.resource a{color:#2563eb;font-weight:700}
+.quiz{background:#111827;color:#fff;border-radius:20px;padding:30px}.question{background:#1f2937;border-radius:13px;padding:19px;margin:15px 0}.question h3{margin-bottom:12px}.option{display:block;background:#374151;padding:10px;border-radius:8px;margin:7px 0;cursor:pointer}.option input{margin-right:8px}.result{display:none;background:#fff;color:#111827;padding:20px;border-radius:13px;margin-top:18px;text-align:center}.result h2{color:#2563eb}
+footer{background:#0f172a;color:#cbd5e1;text-align:center;padding:30px 18px}footer a{color:#60a5fa}
+#topbtn{display:none;position:fixed;right:16px;bottom:16px;width:44px;height:44px;border:0;border-radius:50%;background:#2563eb;color:#fff;font-size:20px}
+.hide{display:none!important}
+@media(max-width:850px){.heroin{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.resources{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){nav{flex-wrap:wrap}.menu{display:block}.links{display:none;width:100%;flex-direction:column}.links.show{display:flex}.links a{background:#f8fafc}.grid,.resources{grid-template-columns:1fr}.hero{padding:48px 18px}h1{font-size:40px}.quiz{padding:18px}}
+
+/* Personal AI */
+.ai-wrap{max-width:900px;margin:auto;background:#fff;border:1px solid #e5e7eb;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px #0000000b}
+.ai-head{background:linear-gradient(135deg,#111827,#3730a3);color:#fff;padding:22px}
+.ai-head h3{font-size:24px;margin-bottom:5px}
+.ai-head p{color:#dbeafe;font-size:14px}
+.ai-chat{height:430px;overflow-y:auto;padding:18px;background:#f8fafc}
+.ai-msg{max-width:82%;padding:12px 15px;border-radius:15px;margin:10px 0;white-space:pre-wrap}
+.ai-user{margin-left:auto;background:#dbeafe;color:#172554;border-bottom-right-radius:4px}
+.ai-bot{background:#fff;border:1px solid #e5e7eb;border-bottom-left-radius:4px}
+.ai-input{display:flex;gap:8px;padding:13px;border-top:1px solid #e5e7eb}
+.ai-input input{flex:1;padding:13px;border:1px solid #dbe1ea;border-radius:10px;outline:0}
+.ai-input button{border:0;border-radius:10px;background:#2563eb;color:#fff;padding:0 18px;font-weight:700;cursor:pointer}
+.ai-note{padding:12px 16px;background:#eff6ff;color:#334155;font-size:13px;border-top:1px solid #dbeafe}
+.ai-key{margin-top:15px;display:none}
+.ai-key input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px}
+.ai-settings{padding:15px 18px;border-top:1px solid #e5e7eb}
+.ai-settings button{border:1px solid #2563eb;background:#fff;color:#2563eb;border-radius:8px;padding:7px 10px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<a class="logo" href="#home">CCC <span>Master Course</span></a>
+<button class="menu" onclick="document.getElementById('links').classList.toggle('show')">☰ Menu</button>
+<div class="links" id="links">
+<a href="#home">Home</a><a href="#chapters">Chapters</a><a href="#topics">Topics</a><a href="#links2">Links</a><a href="#quiz">Quiz</a><a href="#personal-ai">🤖 Personal AI</a>
+</div>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="heroin">
+<div>
+<span class="badge">My First Website</span>
+<h1>CCC को आसान तरीके से सीखें</h1>
+<p>Computer, Operating System, Word Processing, Spreadsheet, Presentation, Internet, Email, Digital Tools, Cyber Security और Future Skills को step-by-step सीखें।</p>
+<a class="btn white" href="#chapters">Course शुरू करें</a>
+<a class="btn dark" href="#quiz">Final Quiz</a>
+</div>
+<div class="herocard">
+<h3>इस website में</h3>
+<div>✓ Chapter-wise syllabus</div><div>✓ आसान Hindi explanation</div><div>✓ Important examples</div><div>✓ Useful links</div><div>✓ Progress tracking</div><div>✓ Final quiz और score</div>
+</div>
+</div>
+</section>
+
+<section class="container" id="chapters">
+<div class="title"><h2>CCC Course Chapters</h2><p>किसी chapter पर क्लिक करके सीधे पढ़ें।</p></div>
+<div class="search"><input id="search" placeholder="Topic search करें: Excel, Internet, Cyber Security..." oninput="searchCards()"></div>
+<div class="stats">
+<div class="stat"><strong>10</strong><span>Chapters</span></div>
+<div class="stat"><strong>50+</strong><span>Topics</span></div>
+<div class="stat"><strong id="doneCount">0</strong><span>Completed</span></div>
+<div class="stat"><strong>20</strong><span>Quiz Questions</span></div>
+</div>
+<div class="progress"><b>Course Progress</b><div class="bar"><div class="fill" id="fill"></div></div><small id="pct">0% completed</small></div>
+
+<div class="grid" id="cards">
+<script>
+const chapters=[
+["1","Computer Introduction","Computer basics, hardware, software, input-output और memory.","computer","Computer क्या है?","Hardware & Software","Input & Output Devices","Memory & Storage"],
+["2","Operating System","OS, desktop, files, folders और system basics.","os","Operating System","Desktop & Taskbar","Files & Folders","Windows Basics"],
+["3","Word Processing","Documents create, edit और format करना.","word","Word Processor","Text Formatting","Tables","Page Setup"],
+["4","Spreadsheet","Excel/Calc, cells, formulas, functions और charts.","spreadsheet","Workbook & Worksheet","Rows & Columns","Formulas & Functions","Charts & Sorting"],
+["5","Presentation","Slides, images, animation और slide show.","presentation","Presentation Basics","Slides","Text & Images","Animation"],
+["6","Internet & WWW","Internet, browser, search engine, URL और web.","internet","Internet","WWW","Web Browser","Search Engine"],
+["7","Email & Social Networking","Email, CC/BCC, attachments और e-Governance.","email","Email Basics","To, CC & BCC","Attachments","e-Governance"],
+["8","Digital Financial Tools","UPI, QR, mobile banking और digital payment safety.","digital","Digital Payment","UPI","QR Code","Mobile Banking"],
+["9","Cyber Security","Virus, malware, phishing, passwords और safety.","security","Cyber Security","Malware & Virus","Phishing","Strong Password"],
+["10","Future Skills","AI, IoT, cloud, big data और blockchain.","future","Artificial Intelligence","IoT","Cloud Computing","Blockchain"]
+];
+document.write(chapters.map(c=>`<article class="card" data-search="${c[1]} ${c[2]} ${c.slice(4).join(" ")}">
+<div class="top"><div class="num">CHAPTER ${c[0].padStart(2,"0")}</div><h3>${c[1]}</h3><p>${c[2]}</p></div>
+<div class="cardbody"><ul class="topics">${c.slice(4).map(t=>`<li><a href="#${c[3]}">→ ${t}</a></li>`).join("")}</ul>
+<button class="complete" data-id="${c[0]}" onclick="complete(${c[0]},this)">Mark as Complete</button></div></article>`).join(""));
+</script>
+</div>
+</section>
+
+<section class="container" id="topics">
+<div class="title"><h2>Complete Topic Notes</h2><p>CCC के important concepts आसान भाषा में।</p></div>
+
+<article class="topic" id="computer"><h3>1. Computer Introduction</h3><p>Computer एक electronic device है जो input data को process करके useful output देता है।</p><h4>मुख्य भाग</h4><ul><li>Input Unit</li><li>CPU</li><li>Memory</li><li>Output Unit</li><li>Storage</li></ul><div class="box"><b>Example:</b> Keyboard से नाम type करना input है, CPU processing करता है और Monitor पर दिखना output है।</div></article>
+
+<article class="topic" id="os"><h3>2. Operating System</h3><p>Operating System user और computer hardware के बीच interface का काम करता है।</p><h4>Examples</h4><ul><li>Windows</li><li>Linux</li><li>macOS</li><li>Android</li><li>iOS</li></ul><h4>Files और Folders</h4><p>File में data store होता है और Folder files को व्यवस्थित रखने में मदद करता है।</p></article>
+
+<article class="topic" id="word"><h3>3. Word Processing</h3><p>Word Processor से documents create, edit, format और print किए जाते हैं।</p><h4>Important features</h4><ul><li>Copy, Cut, Paste</li><li>Bold, Italic, Underline</li><li>Font और Alignment</li><li>Tables</li><li>Header/Footer</li><li>Print और PDF</li></ul><div class="box"><b>Shortcuts:</b> Ctrl+C = Copy, Ctrl+X = Cut, Ctrl+V = Paste, Ctrl+S = Save, Ctrl+P = Print.</div></article>
+
+<article class="topic" id="spreadsheet"><h3>4. Spreadsheet</h3><p>Spreadsheet का उपयोग data, calculations, tables, sorting और charts के लिए किया जाता है।</p><h4>Terms</h4><ul><li>Workbook</li><li>Worksheet</li><li>Row</li><li>Column</li><li>Cell</li><li>Cell Address</li><li>Formula</li><li>Function</li></ul><div class="box"><b>Common functions:</b> SUM, AVERAGE, MAX, MIN और COUNT. Formula सामान्यतः = से शुरू होता है।</div></article>
+
+<article class="topic" id="presentation"><h3>5. Presentation</h3><p>Presentation software information को slides के रूप में दिखाने के लिए उपयोग किया जाता है।</p><h4>Concepts</h4><ul><li>Slides और layouts</li><li>Text और images</li><li>Shapes और charts</li><li>Animation</li><li>Transition</li><li>Slide Show</li></ul></article>
+
+<article class="topic" id="internet"><h3>6. Internet & WWW</h3><p>Internet interconnected networks का विशाल network है। WWW internet पर उपलब्ध interconnected web pages और resources की व्यवस्था है।</p><h4>Important terms</h4><ul><li>Website</li><li>Webpage</li><li>Browser</li><li>Search Engine</li><li>URL</li><li>Upload और Download</li></ul><div class="box"><b>Browsers:</b> Chrome, Firefox, Edge, Safari. Search engines के उदाहरण Google और Bing हैं।</div></article>
+
+<article class="topic" id="email"><h3>7. Email, Social Networking & e-Governance</h3><p>Email electronic messages भेजने और प्राप्त करने का माध्यम है।</p><h4>Email fields</h4><ul><li>To - मुख्य recipient</li><li>CC - visible copy</li><li>BCC - hidden copy</li><li>Subject - विषय</li><li>Attachment - file जोड़ना</li></ul><p>e-Governance में government services को digital माध्यम से उपलब्ध कराया जाता है।</p></article>
+
+<article class="topic" id="digital"><h3>8. Digital Financial Tools</h3><p>Digital financial tools electronic payments और banking के लिए उपयोग किए जाते हैं।</p><ul><li>UPI</li><li>QR Code</li><li>Mobile Banking</li><li>Internet Banking</li><li>Debit/Credit Card</li><li>Digital Wallet</li><li>OTP</li></ul><div class="box"><b>Safety:</b> OTP, PIN और password किसी के साथ share न करें।</div></article>
+
+<article class="topic" id="security"><h3>9. Cyber Security</h3><p>Cyber Security digital systems, accounts, networks और information को cyber threats से सुरक्षित रखने की प्रक्रिया है।</p><h4>Threats</h4><ul><li>Virus</li><li>Worm</li><li>Trojan</li><li>Spyware</li><li>Ransomware</li><li>Phishing</li></ul><h4>Safe practices</h4><ul><li>Strong passwords</li><li>Two-factor authentication</li><li>Unknown links से बचें</li><li>Software update रखें</li><li>Backup रखें</li></ul></article>
+
+<article class="topic" id="future"><h3>10. Future Skills & Emerging Technologies</h3><h4>Artificial Intelligence</h4><p>AI ऐसी technology है जिसमें computer systems ऐसे tasks कर सकते हैं जिनमें human intelligence की आवश्यकता होती है।</p><h4>IoT</h4><p>Internet-connected physical devices data exchange कर सकते हैं।</p><h4>Cloud Computing</h4><p>Internet के माध्यम से computing resources, storage और services का उपयोग करना cloud computing है।</p><h4>Big Data</h4><p>बहुत बड़े और complex datasets को Big Data कहा जाता है।</p><h4>Blockchain</h4><p>Blockchain distributed ledger technology है जिसमें records को blocks की श्रृंखला में रखा जा सकता है।</p></article>
+</section>
+
+<section class="container" id="links2">
+<div class="title"><h2>Important CCC Links</h2><p>Useful official resources.</p></div>
+<div class="resources">
+<div class="resource"><h3>NIELIT Official</h3><p>CCC और NIELIT की official information.</p><a href="https://www.nielit.gov.in/" target="_blank">Open NIELIT →</a></div>
+<div class="resource"><h3>NIELIT Student Portal</h3><p>Student और examination related services.</p><a href="https://student.nielit.gov.in/" target="_blank">Open Portal →</a></div>
+<div class="resource"><h3>NIELIT Learning</h3><p>Learning resources के लिए.</p><a href="https://lms.nielit.gov.in/" target="_blank">Open Learning →</a></div>
+<div class="resource"><h3>Digital India</h3><p>Digital India programme की जानकारी.</p><a href="https://www.digitalindia.gov.in/" target="_blank">Open Digital India →</a></div>
+<div class="resource"><h3>Cyber Crime Portal</h3><p>Cyber crime reporting और information.</p><a href="https://www.cybercrime.gov.in/" target="_blank">Open Portal →</a></div>
+</div>
+</section>
+
+<section class="container" id="quiz">
+<div class="quiz">
+<div class="title" style="color:white"><h2>CCC Final Quiz</h2><p style="color:#cbd5e1">20 questions • अपना knowledge check करें</p></div>
+<form id="quizForm"></form>
+<button class="btn blue" type="button" onclick="submitQuiz()">Submit Quiz</button>
+<button class="btn" style="background:#059669;color:white" type="button" onclick="resetQuiz()">Reset Quiz</button>
+<div class="result" id="result"><h2 id="score"></h2><p id="message"></p></div>
+</div>
+</section>
+
+
+<section class="container" id="personal-ai">
+  <div class="title">
+    <h2>🤖 Personal AI Assistant</h2>
+    <p>CCC और Computer से जुड़े सवाल पूछें और AI से जवाब पाएं।</p>
+  </div>
+
+  <div class="ai-wrap">
+    <div class="ai-head">
+      <h3>My Personal AI</h3>
+      <p>Hindi और English में सवाल पूछ सकते हैं।</p>
+    </div>
+
+    <div class="ai-chat" id="aiChat">
+      <div class="ai-msg ai-bot">नमस्ते! 👋 मैं आपका Personal AI Assistant हूँ। आप पूछ सकते हैं: “CPU क्या है?”, “HTML क्या है?”, “Cyber Security समझाओ” आदि।</div>
+    </div>
+
+    <div class="ai-input">
+      <input id="aiInput" placeholder="अपना सवाल लिखें..." onkeydown="if(event.key==='Enter') askPersonalAI()">
+      <button onclick="askPersonalAI()">Send</button>
+    </div>
+
+    <div class="ai-settings">
+      <button onclick="toggleAIKey()">⚙️ AI API Settings</button>
+      <div class="ai-key" id="aiKeyBox">
+        <p style="font-size:13px;color:#64748b;margin:8px 0">
+          Real online AI के लिए अपनी API key यहाँ डालें। Static website में API key डालना सुरक्षित नहीं है; production में backend/proxy इस्तेमाल करें।
+        </p>
+        <input id="aiKey" type="password" placeholder="API key (optional)">
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <b>Note:</b> बिना API key के भी यह CCC के common questions के लिए built-in answers देगा। Real general-purpose AI answers के लिए secure backend/API connection जरूरी है।
+    </div>
+  </div>
+</section>
+
+<footer><h3>My First Website</h3><p>CCC Master Course • Learn Computer Concepts</p><p><a href="https://www.nielit.gov.in/" target="_blank">NIELIT Official Website</a></p></footer>
+<button id="topbtn" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const questions=[
+["Computer में processing का मुख्य कार्य कौन करता है?",["Monitor","CPU","Keyboard","Printer"],"B"],
+["इनमें से कौन Operating System है?",["Windows","Google","HTML","JPG"],"A"],
+["Copy करने की shortcut key क्या है?",["Ctrl + X","Ctrl + V","Ctrl + C","Ctrl + P"],"C"],
+["Spreadsheet formula सामान्यतः किस चिन्ह से शुरू होता है?",["#","=","@","&"],"B"],
+["SUM function का उपयोग किसके लिए किया जाता है?",["जोड़ने के लिए","घटाने के लिए","केवल text लिखने के लिए","Slide बनाने के लिए"],"A"],
+["WWW का पूरा नाम क्या है?",["World Wide Web","World Web Window","Wide World Window","Web World Wide"],"A"],
+["इनमें से कौन web browser है?",["Chrome","Excel","PowerPoint","Calculator"],"A"],
+["Email में BCC का मुख्य उपयोग क्या है?",["Recipient को hide करना","Email delete करना","File compress करना","Browser खोलना"],"A"],
+["UPI किससे संबंधित है?",["Digital payments","Word processing","Presentation","Image editing"],"A"],
+["OTP का उपयोग सामान्यतः किसलिए किया जाता है?",["Authentication/verification","Printing","Drawing","Formatting"],"A"],
+["Phishing क्या है?",["Sensitive information लेने का fraudulent प्रयास","Document print करना","Computer बंद करना","File rename करना"],"A"],
+["Strong password में क्या होना उपयोगी है?",["केवल नाम","केवल 123456","अलग-अलग प्रकार के characters का उचित combination","केवल जन्म वर्ष"],"C"],
+["AI का पूरा नाम क्या है?",["Automatic Internet","Artificial Intelligence","Advanced Internet","Application Interface"],"B"],
+["IoT का संबंध किससे है?",["Internet-connected physical devices","केवल printing","केवल typing","केवल drawing"],"A"],
+["Ctrl + S का उपयोग किसलिए किया जाता है?",["Save","Search","Select","Share"],"A"],
+["URL किससे संबंधित है?",["Web address","Printer cartridge","Keyboard key","CPU speed"],"A"],
+["इनमें से कौन output device है?",["Keyboard","Mouse","Monitor","Scanner"],"C"],
+["Cloud Computing में resources सामान्यतः कैसे access किए जाते हैं?",["Network/Internet के माध्यम से","केवल printer से","केवल keyboard से","केवल calculator से"],"A"],
+["Malware से क्या आशय है?",["Malicious software","Monitor hardware","Music software","Microsoft keyboard"],"A"],
+["Blockchain किस प्रकार की technology है?",["Distributed ledger technology","केवल image format","केवल word processor","केवल browser"],"A"]
+];
+
+const form=document.getElementById("quizForm");
+form.innerHTML=questions.map((q,i)=>`<div class="question"><h3>${i+1}. ${q[0]}</h3>${q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${String.fromCharCode(65+j)}"> ${o}</label>`).join("")}</div>`).join("");
+
+function complete(n,btn){
+ let a=JSON.parse(localStorage.getItem("cccDone")||"[]");
+ if(a.includes(n)){a=a.filter(x=>x!==n);btn.classList.remove("done");btn.textContent="Mark as Complete"}
+ else{a.push(n);btn.classList.add("done");btn.textContent="✓ Completed"}
+ localStorage.setItem("cccDone",JSON.stringify(a));updateProgress();
+}
+function updateProgress(){
+ let a=JSON.parse(localStorage.getItem("cccDone")||"[]"),p=Math.round(a.length/10*100);
+ document.getElementById("doneCount").textContent=a.length;
+ document.getElementById("fill").style.width=p+"%";
+ document.getElementById("pct").textContent=p+"% completed";
+ document.querySelectorAll(".complete").forEach(b=>{
+  let n=Number(b.dataset.id);
+  if(a.includes(n)){b.classList.add("done");b.textContent="✓ Completed"}
+ });
+}
+function searchCards(){
+ let s=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".card").forEach(c=>c.classList.toggle("hide",!(c.dataset.search||"").toLowerCase().includes(s)));
+}
+function submitQuiz(){
+ let score=0,answered=0;
+ questions.forEach((q,i)=>{
+  let x=document.querySelector(`input[name="q${i}"]:checked`);
+  if(x){answered++;if(x.value===q[2])score++}
+ });
+ if(answered<20){alert("कृपया सभी 20 questions का answer दें।");return}
+ let p=score*5;
+ document.getElementById("score").textContent=`आपका Score: ${score}/20 (${p}%)`;
+ document.getElementById("message").textContent=p>=80?"बहुत अच्छा!":p>=60?"अच्छा प्रयास! गलत topics को दोबारा पढ़ें।":"Topics को फिर से पढ़कर quiz दोबारा attempt करें।";
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function resetQuiz(){form.reset();document.getElementById("result").style.display="none"}
+window.addEventListener("scroll",()=>document.getElementById("topbtn").style.display=scrollY>400?"block":"none");
+updateProgress();
+
+// Personal AI Assistant
+function addAIMessage(text, who){
+  const chat=document.getElementById("aiChat");
+  const div=document.createElement("div");
+  div.className="ai-msg "+(who==="user"?"ai-user":"ai-bot");
+  div.textContent=text;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function toggleAIKey(){
+  const box=document.getElementById("aiKeyBox");
+  box.style.display=box.style.display==="block"?"none":"block";
+}
+
+function localAIAnswer(q){
+  const x=q.toLowerCase();
+  if(x.includes("cpu")) return "CPU का पूरा नाम Central Processing Unit है। यह instructions को process करता है और computer के processing कार्यों का मुख्य हिस्सा संभालता है।";
+  if(x.includes("ram")) return "RAM का पूरा नाम Random Access Memory है। यह volatile/temporary memory है, जिसमें currently running programs और data रखे जाते हैं।";
+  if(x.includes("html")) return "HTML का पूरा नाम HyperText Markup Language है। इसका उपयोग webpage की structure बनाने के लिए किया जाता है।";
+  if(x.includes("css")) return "CSS का पूरा नाम Cascading Style Sheets है। इसका उपयोग webpage के design, colors, fonts, spacing और layout के लिए किया जाता है।";
+  if(x.includes("javascript") || x.includes("java script")) return "JavaScript webpage को interactive बनाता है, जैसे buttons, quiz, calculations और dynamic content।";
+  if(x.includes("internet")) return "Internet interconnected networks का global network है। इसका उपयोग websites, email, communication और online services के लिए होता है।";
+  if(x.includes("cyber") || x.includes("security")) return "Cyber Security में devices, accounts, networks और data को online threats से सुरक्षित रखना शामिल है। Strong passwords, 2FA और phishing से सावधानी जरूरी है।";
+  if(x.includes("upi")) return "UPI का पूरा नाम Unified Payments Interface है। यह digital payments और bank-to-bank transfers के लिए इस्तेमाल होता है। अपना UPI PIN/OTP किसी से share न करें।";
+  if(x.includes("spreadsheet") || x.includes("excel") || x.includes("calc")) return "Spreadsheet में rows और columns में data रखा जाता है। Formulas और functions से calculations की जाती हैं; LibreOffice Calc इसका उदाहरण है।";
+  if(x.includes("email")) return "Email electronic messages भेजने और प्राप्त करने की सुविधा है। To, CC, BCC, Subject और Attachment इसके common parts हैं।";
+  if(x.includes("hello") || x.includes("hi") || x.includes("नमस्ते")) return "नमस्ते! 👋 CCC या Computer से जुड़ा कोई भी सवाल पूछिए।";
+  return "इस सवाल का offline answer मेरे built-in CCC knowledge में नहीं मिला। अगर आप online general AI answer चाहते हैं, तो इस website को secure backend/API से connect करना होगा।";
+}
+
+async function askPersonalAI(){
+  const input=document.getElementById("aiInput");
+  const q=input.value.trim();
+  if(!q) return;
+
+  addAIMessage(q,"user");
+  input.value="";
+
+  const key=document.getElementById("aiKey").value.trim();
+  if(!key){
+    setTimeout(()=>addAIMessage(localAIAnswer(q),"bot"),250);
+    return;
+  }
+
+  addAIMessage("AI सोच रहा है...","bot");
+  const chat=document.getElementById("aiChat");
+
+  try{
+    // OpenAI-compatible endpoint. Replace with your own secure backend endpoint in production.
+    const response=await fetch("https://api.openai.com/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+key
+      },
+      body:JSON.stringify({
+        model:"gpt-4o-mini",
+        messages:[
+          {role:"system",content:"You are a helpful Personal AI Assistant for a CCC computer-learning website. Answer clearly, simply, and preferably in Hindi when the user asks in Hindi."},
+          {role:"user",content:q}
+        ],
+        temperature:0.4
+      })
+    });
+
+    if(!response.ok) throw new Error("API request failed");
+    const data=await response.json();
+    chat.lastElementChild.remove();
+    addAIMessage(data.choices?.[0]?.message?.content || "AI ने कोई answer नहीं दिया।","bot");
+  }catch(err){
+    chat.lastElementChild.remove();
+    addAIMessage("Online AI से connection नहीं हो पाया। API key/Internet/API access check करें। फिलहाल: "+localAIAnswer(q),"bot");
+  }
+}
+
+</script>
+</body>
+</html>
